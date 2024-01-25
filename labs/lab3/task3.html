@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+#bicycle{
+    height: 150px;
+    width: 200px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    transition: transform .5s ease-in-out;
+}
+       
+    </style>
+</head>
+<body>
+    <div>
+      
+       
+        <img src="—Pngtree—cartoon characters ride bicycles_4141664.png" id="bicycle" alt="">
+    
+        </div>
+        <script>
+
+
+            const bicycle = document.getElementById('bicycle');
+const container = bicycle.parentElement;
+
+let left = 0;
+let sign = 1;
+
+let ticking = false;
+
+bicycle.style.left = `${left}px`;
+bicycle.style.transform = `scaleX(${sign})`;
+
+function translate() {
+ 
+  left += sign * 7;
+    
+  if (left + bicycle.offsetWidth >= container.clientWidth)
+  {
+    left = container.clientWidth - bicycle.offsetWidth;
+    sign *= -1;
+  } 
+  else if (left <= 0) 
+  {
+    left = 0;
+    sign *= -1;
+  }
+    
+  if (ticking) 
+  {
+    return;
+  }
+  
+
+  requestAnimationFrame(() => 
+  { 
+    bicycle.style.left = `${left}px`;
+    bicycle.style.transform = `scaleX(${sign})`;
+    
+    ticking = false;
+  });
+  
+  ticking = true;
+}
+
+setInterval(translate, 10);
+        </script>
+</body>
+</html>

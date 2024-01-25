@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Maker</title>
+    <style>
+   body {
+ margin: 0 auto;
+ width: 50%;  
+ text-align: center;
+ padding:50px;
+}
+        table {
+            border-collapse: collapse;
+            margin-left: 280px;
+            margin-top: 30px;
+        }
+
+        td {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            padding: 0;
+            margin: 0;
+        }
+        
+ 
+    </style>
+</head>
+<body>
+    <h2>choose grid size</h2>
+
+    <label for="height">Grid Height:</label>
+    <input type="number" id="height" min="1" value="10">
+
+    <label for="width">Grid Width:</label>
+    <input  type="number" id="width" min="1" value="10">
+
+    <button onclick="createPixelArt()">Create Pixel Art</button>
+     <br>
+    <label for="colorPicker">Pick A Color</label>
+    <br>
+    <input type="color" id="colorPicker" value="#000000">
+    
+    <table id="pixelTable"></table>
+    <canvas id="pixelCanvas"></canvas>
+
+    <script>
+        function createPixelArt() {
+            const height = document.getElementById('height').value;
+            const width = document.getElementById('width').value;
+            const table = document.getElementById('pixelTable');
+            const canvas = document.getElementById('pixelCanvas');
+            const colorPicker = document.getElementById('colorPicker');
+
+            // Clear existing content
+            table.innerHTML = '';
+            canvas.style.display = 'none';
+
+            // Create the table cells
+            for (let i = 0; i < height; i++) {
+                const row = table.insertRow();
+                for (let j = 0; j < width; j++) {
+                    const cell = row.insertCell();
+                    cell.addEventListener('click', function() {
+                        // Change the cell background color when clicked
+                        cell.style.backgroundColor = colorPicker.value;
+                    });
+                }
+            }
+
+            
+
+            //  draw pixel art on it
+             
+            const ctx = canvas.getContext('2d');
+            for (let i = 0; i < height; i++) {
+                for (let j = 0; j < width; j++) {
+                    ctx.fillStyle = table.rows[i].cells[j].style.backgroundColor;
+                    ctx.fillRect(j * 20, i * 20, 20, 20);
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
+

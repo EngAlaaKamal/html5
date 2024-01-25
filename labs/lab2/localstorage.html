@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: #ff0000;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <form id="registrationForm" method="post" onsubmit="return validateForm()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" value="" name="username" pattern="^[a-zA-Z0-9]{3,10}$" required>
+     <!-- Display error message for username -->
+     <div id="usernameError" class="error"></div>
+ 
+    <label for="email">Email:</label>
+    <input type="email" id="email" value="" name="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required>
+     <!-- Display error message for email -->
+     <div id="emailError" class="error"></div>
+ 
+    <input type="submit" value="Submit"  >
+ </form>
+
+ 
+
+ 
+
+ 
+ <script>
+    function validateForm() {
+        var username = document.getElementById('username');
+        var email = document.getElementById('email');
+   
+ 
+        if (!username.validity.valid) {
+            document.getElementById('usernameError').innerHTML = 'Username must be 3-10 characters long and can contain letters and numbers.';
+            return false;
+        }
+ 
+        if (!email.validity.valid) {
+            document.getElementById('emailError').innerHTML = 'Please enter a valid email address.';
+            return false;
+        }
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////local storage///////////////////////////////////////
+localStorage.setItem('username',username.value);
+localStorage.setItem('email',email.value);
+ 
+ 
+        return true;
+    }
+
+ 
+
+ 
+ </script>
+ 
+
+</body>
+</html>

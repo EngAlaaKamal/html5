@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { 
+        }
+
+        .greeting-image {
+            width: 100%;
+            max-width: 500px; /* Adjust the max-width as needed */
+            border-radius: 10px;
+            margin: 50px auto;
+            mix-blend-mode: screen; /* Blend mode for color blending */
+            transition: filter 0.5s; /* Add transition for smoother effect */
+        }
+
+        /* Apply filters */
+        .saturate {
+            filter: saturate(200%);
+        }
+
+        .opacity {
+            opacity: 0.7; /* Adjust the opacity value as needed */
+        }
+
+        .invert {
+            filter: invert(100%);
+        }
+
+        .sepia {
+            filter: sepia(50%);
+        }
+
+        .grayscale {
+            filter: grayscale(100%);
+        }
+    </style>
+</head>
+<body>
+    <img src="img.jpg" alt="Greeting Image" class="greeting-image" id="greeting-image">
+
+    <div>
+        <button onclick="applyFilter('saturate')">Saturate</button>
+        <button onclick="applyFilter('opacity')">Opacity</button>
+        <button onclick="applyFilter('invert')">Invert</button>
+        <button onclick="applyFilter('sepia')">Sepia</button>
+        <button onclick="applyFilter('grayscale')">Grayscale</button>
+    </div>
+
+    <script>
+        function applyFilter(filter) {
+            document.getElementById('greeting-image').classList.add(filter);
+        }
+    </script>
+</body>
+</html>
+

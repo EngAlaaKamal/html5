@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 Progress with Style and Range Control</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 50px;
+    }
+
+ 
+
+    #progress-bar {
+       
+      width: 50%;
+      height: 30px;
+      background-color: #4caf50;
+      border-radius: 5px;
+      transition: width 0.3s;
+    }
+
+    #progress-percentage {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    #range-input {
+      width: 50%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+ 
+    <progress id="progress-bar" max="100" value="0"></progress>
+    <div id="progress-percentage">0%</div>
+ 
+
+  <label for="range-input">Adjust Progress:</label>
+  <input type="range" id="range-input" min="0" max="100" value="0" step="1" oninput="updateProgress(this.value)">
+
+  <script>
+    function updateProgress(value) {
+      const progressBar = document.getElementById('progress-bar');
+      const progressPercentage = document.getElementById('progress-percentage');
+
+      progressBar.value = value;
+      progressPercentage.textContent = value + '%';
+    }
+  </script>
+</body>
+</html>
+
+
